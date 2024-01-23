@@ -10,14 +10,14 @@ namespace AlkuAineet
         {
             int max = 5;
             int grade = 0;
-            string answer;
+            string answer = "";
 
             List<string> answers = new List<string>();
 
             Console.WriteLine("Valitse, haluatko");
             Console.WriteLine("P = Pelata");
             Console.WriteLine("T = Tarkastella tuloksia");
-            input = Console.ReadLine();
+            string input = Console.ReadLine();
             if (input = "P")
             {
                 play();
@@ -58,9 +58,23 @@ namespace AlkuAineet
                         // Lisää yksi piste "grade"
                         grade++;
                     }
+                Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
+                string date = Console.ReadLine;
+
+                bool doesDirectoryExist = Directory.Exists(date);
+                if (true)
+                {
+                    break;
+                }
+                else
+                {
+                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), date));
+                }
+
 
 
                 }
+
             }
 
             public static void review()
