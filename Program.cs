@@ -7,9 +7,17 @@ namespace AlkuAineet
         public static void Main(string[] args)
         {
             {
-                //testing
+                
+            }
+            public static void play()
+            {
+
+            }
+
+            public static void review()
+            {
+
             }
         }
     }
 }
-    
