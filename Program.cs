@@ -87,6 +87,8 @@ namespace AlkuAineet
                     // Luo Tulokset.json jos ei jo ole olemassa
                     using (File.Create(resultsFilePath));
                 }
+                //Lisää uuden rivin JSON tiedostoon, tähän riville tulee 'grade'muuttujan arvo
+                File.AppendAllText(resultsFilePath, $"{grade}\n");
                           
                 Console.WriteLine("Sait " + grade + " oikein");
                 Console.WriteLine("Sait " + (max - grade) + " väärin");
