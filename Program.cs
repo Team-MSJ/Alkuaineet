@@ -71,6 +71,11 @@ namespace AlkuAineet
                         grade++;
                     }
                 }
+
+                //Lisää uuden rivin JSON tiedostoon, tähän riville tulee 'grade'muuttujan arvo
+                File.AppendAllText(resultsFilePath, $"{grade}\n");
+                                        
+
             }
             Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
             string date = Console.ReadLine();
