@@ -66,40 +66,54 @@ namespace AlkuAineet
                         // Lisää yksi piste "grade"
                         grade++;
                     }
-                  }
-                  Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
-                  string date = Console.ReadLine;
+                }
+                Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
+                string date = Console.ReadLine;
 
-                  bool doesDirectoryExist = Directory.Exists(date);
-                  if (true)
-                  {
-                        break;
-                  }
-                  else
-                  {
-                        Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), date));
-                  }
+                bool doesDirectoryExist = Directory.Exists(date);
+                if (true)
+                {
+                    break;
+                }
+                else
+                {
+                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), date));
+                }
 
                 // Tarkista onko Tulokset.json tiedostoa hakemistossa date
-                string resultsFilePath = Path.Combine(Directory.GetCurrentDirectory(), date,"Tulkoset.json");
+                string resultsFilePath = Path.Combine(Directory.GetCurrentDirectory(), date, "Tulkoset.json");
                 if (!File.Exists(resultsFilePath))
                 {
                     // Luo Tulokset.json jos ei jo ole olemassa
-                    using (File.Create(resultsFilePath));
+                    using (File.Create(resultsFilePath)) ;
                 }
-                          
+
                 Console.WriteLine("Sait " + grade + " oikein");
                 Console.WriteLine("Sait " + (max - grade) + " väärin");
-                Valikko();               
+                Console.Write("Paina mitä tahansa näppäintä");
+                string back = Console.ReadLine();
+                Valikko();
 
             }
 
             public static void Review()
             {
+                int sum = 0;
+                int count = 0;
+                // Lukee listalle kaikki alihakemistot
+                IEnumerable<string> allFilesInAllFolders = Directory.EnumerateFiles("*.json", SearchOption.AllDirectories);
 
-
-
-
+                foreach (var file in allFilesInAllFolders)
+                {
+                    string tuloksetJson = File.ReadAllText(file);
+                    tuloksetData? data = JsonConvert.DeserializeObject<tuloksetData?>(tuloksetJson);
+                    sum += data?.Total ?? 0;
+                    count++;
+                }
+                Console.WriteLine("Kaikkien vastausten keskiarvo  " + (sum / count));
+                // Pysäyttää ohjelman, että käyttäjä voi lukea ohjelman antaman ilmoituksen
+                Console.Write("Paina mitä tahansa näppäintä");
+                back = Console.ReadLine();
                 Valikko();
             }
         }
