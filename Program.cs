@@ -1,8 +1,10 @@
 namespace AlkuAineet
 {
     using System;
-    using System.IO
-    using newtonsoft.json
+
+    using System.IO;
+    using newtonsoft.json;
+
     public class Program
     {
 
@@ -71,6 +73,19 @@ namespace AlkuAineet
                     }
                     Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
                     string date = Console.ReadLine;
+
+
+                    bool doesDirectoryExist = Directory.Exists(date);
+                    if (true)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), date));
+                    }
+
+
 
                     bool doesDirectoryExist = Directory.Exists(date);
                     if (true)
