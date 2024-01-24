@@ -81,11 +81,13 @@ namespace AlkuAineet
                     {
                         Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), date));
                     }
-
-
+                    
+                    Console.WriteLine("Sait " + grade + " oikein");
+                    Console.WriteLine("Sait " + (max - grade) + " väärin");
+                    Valikko();
 
                 }
-                Valikko();
+
             }
 
             public static void Review()
