@@ -1,8 +1,9 @@
 namespace AlkuAineet
 {
     using System;
-    using System.IO 
-    using newtonsoft.json 
+    using System.IO
+    using newtonsoft.json
+
     public class Program
     {
 
@@ -18,6 +19,7 @@ namespace AlkuAineet
             Console.WriteLine("P = Pelata");
             Console.WriteLine("T = Tarkastella tuloksia");
             string input = Console.ReadLine();
+
             if (input = "P")
             {
                 play();
@@ -30,21 +32,20 @@ namespace AlkuAineet
             {
                 Console.WriteLine("Valitse uudelleen");
             }
-            {
-
-            }
+            
             public static void play()
             {
                 //loopataan kunnes 5 vastausta on täynnä
                 for (int i = 0; i < 5; i++)
                 {
                     Console.Write("Anna alkuaine");
-                    answer = Console.ReadLine().Trim().ToLower(); // Convert the input to lowercase
+                    answer = Console.ReadLine().Trim().ToLower(); //Muuntaa vastauksen pienaakkosiksi
 
                     //tarkistaa onko samaa vastausta käytetty aiemmin
                     if (elements.Contains(answer))
                     {
                         Console.Write("Voit antaa saman alkuaineen vain kerran.");
+                        i--; //jos samaa vastausta on käytetty aiemmin, vastauskerroista miinustetaan yksi
                     }
                     else
                     {
@@ -58,6 +59,7 @@ namespace AlkuAineet
                         // Lisää yksi piste "grade"
                         grade++;
                     }
+
                 Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
                 string date = Console.ReadLine;
 
@@ -71,8 +73,14 @@ namespace AlkuAineet
                     Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), date));
                 }
 
+                }
 
-
+                // Tarkista onko Tulokset.json tiedostoa hakemistossa date
+                string resultsFilePath = Path.Combine(Directory.GetCurrentDirectory(), date,"Tulkoset.json");
+                if (!File.Exists(resultsFilePath))
+                {
+                    // Luo Tulokset.json jos ei jo ole olemassa
+                    using (File.Create(resultsFilePath));
                 }
 
             }
