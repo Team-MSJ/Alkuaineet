@@ -1,8 +1,8 @@
 namespace AlkuAineet
 {
     using System;
-    using System.IO 
-    using newtonsoft.json 
+    using System.IO
+    using newtonsoft.json
     public class Program
     {
 
@@ -51,30 +51,31 @@ namespace AlkuAineet
                         // Lisää "answer" listalle "elements"
                         elements.Add(answer);
                     }
-                
+
                     // Tarkista, onko alkuaine tiedostossa "alkuaineet.txt"
                     if (File.ReadLines("alkuaineet.txt").Any(line => line.Equals(answer StringComparison.OrdinalIgnoreCase)))
                     {
                         // Lisää yksi piste "grade"
                         grade++;
                     }
-                Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
-                string date = Console.ReadLine;
+                    Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
+                    string date = Console.ReadLine;
 
-                bool doesDirectoryExist = Directory.Exists(date);
-                if (true)
-                {
-                    break;
+                    bool doesDirectoryExist = Directory.Exists(date);
+                    if (true)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), date));
+                    }
+
+
+
                 }
-                else
-                {
-                    Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), date));
-                }
-
-
-
-                }
-
+                Console.WriteLine("Sait " + grade + " oikein");
+                Console.WriteLine("Sait " + (max - grade) + " väärin");
             }
 
             public static void review()
