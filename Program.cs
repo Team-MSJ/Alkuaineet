@@ -7,6 +7,7 @@ namespace AlkuAineet
 {
     public class Program
     {
+        
         static int max = 5;
         static int grade = 0;
         static string answer = "";
@@ -45,8 +46,10 @@ namespace AlkuAineet
 
         static void Play()
         {
-            //tyhjentää listan ennen jokaista pelikierrrosta
+            string resultsFilePath;
+            //tyhjentää listan ennen jokaista pelikierrrosta 
             elements.Clear();
+            grade = 0; 
             // Loopataan kunnes 5 vastausta on täynnä
             for (int i = 0; i < 5; i++)
             {
@@ -102,10 +105,7 @@ namespace AlkuAineet
                 }
 
                 //Lisää uuden rivin JSON tiedostoon, tähän riville tulee 'grade'muuttujan arvo
-                File.AppendAllText(resultsFilePath, $"{grade}\n");
-                                        
-
-
+                File.AppendAllText(resultsFilePath, $"{grade}\n");          
             }
             Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
             string date = Console.ReadLine();
@@ -142,12 +142,14 @@ namespace AlkuAineet
             }
             
             // Tarkista onko Tulokset.json tiedostoa hakemistossa date
-            string resultsFilePath = Path.Combine(Directory.GetCurrentDirectory(), date, "Tulokset.json");
+             resultsFilePath = Path.Combine(Directory.GetCurrentDirectory(), date, "Tulokset.json");
             if (!File.Exists(resultsFilePath))
             {
                 // Luo Tulokset.json jos ei jo ole olemassa
                 using (File.Create(resultsFilePath)) { }
             }
+            //Lisää uuden rivin JSON tiedostoon, tähän riville tulee 'grade'muuttujan arvo
+                File.AppendAllText(resultsFilePath, $"{grade}\n");
 
             Console.WriteLine("Sait " + grade + " oikein");
             Console.WriteLine("Sait " + (max - grade) + " väärin");
@@ -159,3 +161,5 @@ namespace AlkuAineet
         }
     }
 }
+
+
