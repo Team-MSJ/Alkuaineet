@@ -79,34 +79,47 @@ namespace AlkuAineet
                 }
             }
 
+
+
             Console.Write("\nHakemiston perustamista varten anna kuluva päivä muodossa PPKKVVVV: ");
             var date = Console.ReadLine();
             if (string.IsNullOrEmpty(date))
             {
                 Console.Write("Virheellinen syöte. Anna kuluva päivä.");
             }
-
-            // Check if the directory exists
-            if (!Directory.Exists(date))
+            else
             {
-                Directory.CreateDirectory(Path.Combine(Directory.GetCurrentDirectory(), date));
+                // Check if the directory exists
+                if (!Directory.Exists(date))
+                {
+                    string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), date);
+
+                    // Check if the combined path is not null before creating the directory
+                    if (!string.IsNullOrEmpty(directoryPath))
+                    {
+                        Directory.CreateDirectory(directoryPath);
+
+                        // Check if "Tulokset.json" exists in the directory
+                        string resultsFilePath = Path.Combine(directoryPath, "Tulokset.json");
+                        if (!File.Exists(resultsFilePath))
+                        {
+                            // Create "Tulokset.json" if it doesn't exist
+                            using (File.Create(resultsFilePath)) { }
+                        }
+                        // Add a new line to "Tulokset.json" with the value of the 'grade' variable
+                        File.AppendAllText(resultsFilePath, $"{grade}\n");            
+                    }
+                    else
+                    {
+                        Console.WriteLine("Virhe polkua luotaessa.");
+                    }     
+                }
+                        Console.WriteLine("Sait " + grade + " oikein");
+                        Console.WriteLine("Sait " + (max - grade) + " väärin");
+                        Console.Write("Paina enter jatkaaksesi.");
+                        Console.ReadLine();
+                        Valikko(); 
             }
-
-            // Check if "Tulokset.json" exists in the directory
-            string resultsFilePath = Path.Combine(Directory.GetCurrentDirectory(), date, "Tulokset.json");
-            if (!File.Exists(resultsFilePath))
-            {
-                // Create "Tulokset.json" if it doesn't exist
-                using (File.Create(resultsFilePath)) { }
-            }
-
-            // Add a new line to "Tulokset.json" with the value of the 'grade' variable
-            File.AppendAllText(resultsFilePath, $"{grade}\n");
-
-            Console.WriteLine("Sait " + grade + " oikein");
-            Console.WriteLine("Sait " + (max - grade) + " väärin");
-            Valikko();
-
         }
 
         public class tuloksetData
