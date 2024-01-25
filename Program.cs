@@ -46,6 +46,9 @@ namespace AlkuAineet
 
         static void Play()
         {
+            //resets the list and grade
+            elements.Clear();
+            grade = 0;
             // Loop until 5 answers are given
             for (int i = 0; i < max; i++)
             {
