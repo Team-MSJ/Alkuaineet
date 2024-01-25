@@ -139,10 +139,8 @@ namespace AlkuAineet
             {
                 Console.WriteLine("Ei vastauksia laskettavaksi.");
             }
-
-            Console.Write("Paina mitä tahansa näppäintä");
+            Console.Write("Paina enter jatkaaksesi.");
             Console.ReadLine();
-
             Valikko();
         }
     }
