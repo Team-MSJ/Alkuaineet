@@ -26,7 +26,12 @@ namespace AlkuAineet
             Console.WriteLine("  T = Tarkastella tuloksia");
             Console.WriteLine("  L = Lopettaa");
             string input = Console.ReadLine();
-            if (input == "P")
+             if (string.IsNullOrEmpty(input))
+            {
+                Console.Write("Virheellinen syöte.\nValitse haluato pelata(P)\nTarkastella tuloksia(T)\nVai lopettaa(L)\n");
+                input = Console.ReadLine();
+            }
+            else if (input == "P")
             {
                 Play();
             }
@@ -76,6 +81,10 @@ namespace AlkuAineet
 
             Console.Write("\nHakemiston perustamista varten anna kuluva päivä muodossa PPKKVVVV: ");
             string date = Console.ReadLine();
+            if (string.IsNullOrEmpty(date))
+            {
+                Console.Write("Virheellinen syöte. Anna kuluva päivä.");
+            }
 
             // Check if the directory exists
             if (!Directory.Exists(date))
