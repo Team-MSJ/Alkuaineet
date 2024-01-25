@@ -25,8 +25,8 @@ namespace AlkuAineet
             Console.WriteLine("  P = Pelata");
             Console.WriteLine("  T = Tarkastella tuloksia");
             Console.WriteLine("  L = Lopettaa");
-            string input = Console.ReadLine();
-             if (string.IsNullOrEmpty(input))
+            var input = Console.ReadLine();
+            if (string.IsNullOrEmpty(input))
             {
                 Console.Write("Virheellinen syöte.\nValitse haluato pelata(P)\nTarkastella tuloksia(T)\nVai lopettaa(L)\n");
                 input = Console.ReadLine();
@@ -80,7 +80,7 @@ namespace AlkuAineet
             }
 
             Console.Write("\nHakemiston perustamista varten anna kuluva päivä muodossa PPKKVVVV: ");
-            string date = Console.ReadLine();
+            var date = Console.ReadLine();
             if (string.IsNullOrEmpty(date))
             {
                 Console.Write("Virheellinen syöte. Anna kuluva päivä.");
