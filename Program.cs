@@ -20,7 +20,7 @@ namespace AlkuAineet
 
         static void Valikko()
         {
-            Console.WriteLine("Valitse, haluatko");
+            Console.WriteLine("\nValitse, haluatko");
             Console.WriteLine();
             Console.WriteLine("  P = Pelata");
             Console.WriteLine("  T = Tarkastella tuloksia");
@@ -41,6 +41,7 @@ namespace AlkuAineet
             else
             {
                 Console.WriteLine("Valitse uudelleen");
+                Valikko();
             }
         }
 
