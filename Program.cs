@@ -7,7 +7,7 @@ namespace AlkuAineet
 {
     public class Program
     {
-        
+
         static int max = 5;
         static int grade = 0;
         static string answer = "";
@@ -15,7 +15,7 @@ namespace AlkuAineet
 
         static void Main(string[] args)
         {
-            Valikko(); 
+            Valikko();
         }
 
         static void Valikko()
@@ -36,7 +36,7 @@ namespace AlkuAineet
             }
             else if (input == "L")
             {
-                return; 
+                return;
             }
             else
             {
@@ -70,7 +70,7 @@ namespace AlkuAineet
                 }
             }
 
-            Console.Write("Anna kuluva päivä muodossa PPKKVVVV: ");
+            Console.Write("\nHakemiston perustamista varten anna kuluva päivä muodossa PPKKVVVV: ");
             string date = Console.ReadLine();
 
             // Check if the directory exists
@@ -93,18 +93,18 @@ namespace AlkuAineet
             Console.WriteLine("Sait " + grade + " oikein");
             Console.WriteLine("Sait " + (max - grade) + " väärin");
             Valikko();
-                         
+
         }
 
         public class tuloksetData
-            {
-                public int Total { get; set; }
-                public int count { get; set; }
-            }
+        {
+            public int Total { get; set; }
+            public int count { get; set; }
+        }
         static void Review()
-        { 
-             int sum = 0;
-             int count = 0;
+        {
+            int sum = 0;
+            int count = 0;
 
             string[] allFiles = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.json", SearchOption.AllDirectories);
 
@@ -116,31 +116,31 @@ namespace AlkuAineet
                 // Process each line (assuming each line contains a single score)
                 foreach (var line in lines)
                 {
-                 // Try parsing the line as an integer
-                 if (int.TryParse(line, out int score))
-                {
-                    // Update the sum and count
-                    sum += score;
-                    count++;
-                }
-               
+                    // Try parsing the line as an integer
+                    if (int.TryParse(line, out int score))
+                    {
+                        // Update the sum and count
+                        sum += score;
+                        count++;
+                    }
+
                 }
             }
 
-    if (count > 0)
-    {
-        double average = (double)sum / count;
-        Console.WriteLine($"Kaikkien vastausten keskiarvo: {average:F2}");
-    }
-    else
-    {
-        Console.WriteLine("Ei vastauksia laskettavaksi.");
-    }
+            if (count > 0)
+            {
+                double average = (double)sum / count;
+                Console.WriteLine($"Kaikkien vastausten keskiarvo: {average:F2}");
+            }
+            else
+            {
+                Console.WriteLine("Ei vastauksia laskettavaksi.");
+            }
 
-    Console.Write("Paina mitä tahansa näppäintä");
-    Console.ReadLine();
+            Console.Write("Paina mitä tahansa näppäintä");
+            Console.ReadLine();
 
-    Valikko();
+            Valikko();
         }
     }
 
