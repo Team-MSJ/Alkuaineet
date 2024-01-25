@@ -108,7 +108,8 @@ namespace AlkuAineet
                     string tuloksetJson = File.ReadAllText(file);
                     tuloksetData? data = JsonConvert.DeserializeObject<tuloksetData?>(tuloksetJson);
                     sum += data?.Total ?? 0;
-                    count++;
+                    count += data?.count ?? 0;
+                    //count++;
                 }
                 Console.WriteLine("Kaikkien vastausten keskiarvo  " + (sum / count));
                 // Pysäyttää ohjelman, että käyttäjä voi lukea ohjelman antaman ilmoituksen
